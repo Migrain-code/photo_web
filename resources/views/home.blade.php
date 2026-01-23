@@ -1,0 +1,103 @@
+@extends('layouts.app')
+
+@section('title', 'Home')
+
+@section('content')
+<div class="home-page">
+    <div class="home-header">
+        @if(isset($site_logo) && $site_logo)
+            <a href="/" class="logo-link">
+                <img src="{{ $site_logo }}" alt="Logo" class="site-logo">
+            </a>
+        @endif
+        <a href="/about" class="about-link">About</a>
+    </div>
+    <div id="articles-container" class="articles-grid">
+        <!-- Articles will be loaded here -->
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <p>Makaleler yükleniyor...</p>
+        </div>
+    </div>
+    <div id="loading-more" class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Daha fazla yükleniyor...</p>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+    let currentPage = 1;
+    let lastPage = 1;
+    let isLoading = false;
+
+    // Load articles
+    async function loadArticles(page = 1) {
+        if (isLoading) return;
+        isLoading = true;
+
+        try {
+            const response = await fetch(`/api/articles?page=${page}&per_page=10`);
+            const data = await response.json();
+
+            lastPage = data.last_page;
+            const container = document.getElementById('articles-container');
+            const loadingMore = document.getElementById('loading-more');
+
+            if (page === 1) {
+                container.innerHTML = '';
+            }
+
+            if (data.data.length === 0 && page === 1) {
+                container.innerHTML = '<p>Henüz makale bulunmamaktadır.</p>';
+                return;
+            }
+
+            data.data.forEach(article => {
+                const articleDiv = document.createElement('a');
+                articleDiv.className = 'article-item';
+                articleDiv.href = `/article/${article.slug || article.id}`;
+                
+                // Sadece görsel göster - önce featured_image, yoksa ilk image
+                let imageUrl = article.featured_image;
+                if (!imageUrl && article.images && article.images.length > 0) {
+                    imageUrl = article.images[0].image_path;
+                }
+
+                articleDiv.innerHTML = `
+                    ${imageUrl ? `<img src="${imageUrl}" alt="${article.title}" class="article-featured-image">` : ''}
+                `;
+
+                container.appendChild(articleDiv);
+            });
+
+            if (page < lastPage) {
+                loadingMore.style.display = 'block';
+            } else {
+                loadingMore.style.display = 'none';
+            }
+
+        } catch (error) {
+            console.error('Error loading articles:', error);
+        } finally {
+            isLoading = false;
+        }
+    }
+
+    // Infinite scroll
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = window.innerHeight;
+
+        if (scrollTop + clientHeight >= scrollHeight - 100 && currentPage < lastPage && !isLoading) {
+            currentPage++;
+            loadArticles(currentPage);
+        }
+    });
+
+    // Initial load
+    loadArticles(1);
+</script>
+@endpush
+@endsection
