@@ -52,6 +52,15 @@
             display: block;
         }
 
+        @media (max-width: 768px) {
+            .site-logo {
+                max-height: 30px;
+            }
+            .home-page {
+                padding: 20px;
+            }
+        }
+
         .about-link {
             color: #333;
             text-decoration: none;
