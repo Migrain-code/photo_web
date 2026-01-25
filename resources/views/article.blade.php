@@ -66,7 +66,7 @@
     .article-content-section {
         padding: 60px 40px;
         overflow-y: auto;
-        height: 100vh;
+        height: auto;
         background: #fff;
     }
 

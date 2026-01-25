@@ -165,11 +165,38 @@
         }
 
         .nav-header { margin-bottom: 40px; }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .nav-links { display: flex; gap: 24px; align-items: center; }
         .nav-link { color: #333; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
         .nav-link:hover { opacity: 0.7; }
         .logo-text { font-weight: 600; font-size: 18px; }
+
+        .nav-toggle { display: none; background: none; border: none; padding: 8px; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; }
+        .nav-toggle-bar { display: block; width: 22px; height: 2px; background: #333; transition: transform 0.3s, opacity 0.3s; }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                gap: 0;
+                padding: 16px 0;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                z-index: 100;
+            }
+            .nav-header.nav-open .nav-links { display: flex; }
+            .nav-link { padding: 12px 24px; width: 100%; font-size: 15px; }
+            .nav-header { position: relative; }
+            .nav-inner { width: 100%; }
+            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        }
     </style>
     @stack('styles')
 </head>
@@ -178,5 +205,23 @@
         @yield('content')
     </div>
     @stack('scripts')
+    <script>
+        (function() {
+            var t = document.getElementById('nav-toggle');
+            var h = document.getElementById('nav-header');
+            var l = document.getElementById('nav-links');
+            if (!t || !h || !l) return;
+            t.addEventListener('click', function() {
+                var open = h.classList.toggle('nav-open');
+                t.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            l.querySelectorAll('.nav-link').forEach(function(a) {
+                a.addEventListener('click', function() {
+                    h.classList.remove('nav-open');
+                    t.setAttribute('aria-expanded', 'false');
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

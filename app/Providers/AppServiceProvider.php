@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ProjectSubmission;
+use App\Observers\ProjectSubmissionObserver;
 use App\Services\SettingsService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -31,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
             $settings = app(SettingsService::class);
             $view->with('site_favicon', $settings->getValue('site_favicon'));
         });
+
+        ProjectSubmission::observe(ProjectSubmissionObserver::class);
     }
 }
