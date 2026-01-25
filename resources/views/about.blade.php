@@ -11,7 +11,7 @@
 @section('content')
 <div class="about-page">
     <div class="about-container">
-        <a href="/" class="back-link">← Anasayfa</a>
+        @include('partials.nav')
         <div class="settings-content">
             @if($content)
                 @php

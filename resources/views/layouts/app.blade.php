@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Photo Web')</title>
+    @if(!empty($site_favicon))
+    <link rel="icon" href="{{ $site_favicon }}" type="image/x-icon">
+    @endif
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('meta')
     <style>
@@ -160,6 +163,13 @@
             height: auto;
             margin: 15px 0;
         }
+
+        .nav-header { margin-bottom: 40px; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-link { color: #333; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
+        .nav-link:hover { opacity: 0.7; }
+        .logo-text { font-weight: 600; font-size: 18px; }
     </style>
     @stack('styles')
 </head>

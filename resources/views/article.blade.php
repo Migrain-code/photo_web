@@ -23,7 +23,7 @@
 <div class="article-detail-layout">
     <!-- Left Section: Article Content -->
     <div class="article-content-section">
-        <a href="/" class="back-link">← Anasayfa</a>
+        @include('partials.nav')
         <h1 class="article-detail-title">{{ $article->title }}</h1>
         <div class="article-detail-content">
             {!! $article->content !!}

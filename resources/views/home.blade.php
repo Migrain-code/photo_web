@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', $seoTitle ? $seoTitle->value : 'Home')
+
+@if($seoDescription)
+@push('meta')
+<meta name="description" content="{{ $seoDescription->value }}">
+@endpush
+@endif
 
 @section('content')
 <div class="home-page">
-    <div class="home-header">
-        @if(isset($site_logo) && $site_logo)
-            <a href="/" class="logo-link">
-                <img src="{{ $site_logo }}" alt="Logo" class="site-logo">
-            </a>
-        @endif
-        <a href="/about" class="about-link">About</a>
-    </div>
+    @include('partials.nav')
     <div id="articles-container" class="articles-grid">
         <!-- Articles will be loaded here -->
         <div class="loading">

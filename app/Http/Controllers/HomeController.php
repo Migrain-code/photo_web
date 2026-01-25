@@ -15,9 +15,13 @@ class HomeController extends Controller
     public function index()
     {
         $siteLogo = $this->settingsService->getValue('site_logo');
-        
+        $seoTitle = $this->settingsService->getSetting('main_page_seo_title');
+        $seoDescription = $this->settingsService->getSetting('main_page_seo_description');
+
         return view('home', [
             'site_logo' => $siteLogo,
+            'seoTitle' => $seoTitle,
+            'seoDescription' => $seoDescription,
         ]);
     }
 
