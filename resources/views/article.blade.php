@@ -73,7 +73,7 @@
     .article-images-section {
         padding: 60px 40px;
         overflow-y: auto;
-        height: 100vh;
+        max-height: 1400px;
         background: #f8f9fa;
     }
 
