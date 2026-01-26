@@ -85,6 +85,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+            margin-top: 10px;
         }
 
         @media (max-width: 768px) {
