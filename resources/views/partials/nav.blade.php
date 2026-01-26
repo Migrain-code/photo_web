@@ -12,13 +12,17 @@
             <span class="nav-toggle-bar"></span>
             <span class="nav-toggle-bar"></span>
         </button>
-        <div class="nav-links" id="nav-links">
-            <a href="{{ route('about') }}" class="nav-link">About</a>
+        <div class="nav-right">
+            <div class="nav-links" id="nav-links">
+                <a href="{{ route('about') }}" class="nav-link">About</a>
+                <a href="{{ route('contact') }}" class="nav-link">Contact</a>
+                <a href="{{ route('start-a-project') }}" class="nav-link">Start a Project</a>
+            </div>
             @if(!empty($instagram_url))
-                <a href="{{ $instagram_url }}" target="_blank" rel="noopener noreferrer" class="nav-link">Instagram</a>
+                <div class="nav-instagram" id="nav-instagram">
+                    <a href="{{ $instagram_url }}" target="_blank" rel="noopener noreferrer" class="nav-link nav-link-instagram">Instagram <svg class="nav-instagram-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+                </div>
             @endif
-            <a href="{{ route('contact') }}" class="nav-link">Contact</a>
-            <a href="{{ route('start-a-project') }}" class="nav-link">Start a Project</a>
         </div>
     </div>
 </nav>

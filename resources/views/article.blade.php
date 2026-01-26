@@ -20,58 +20,88 @@
 @endpush
 
 @section('content')
-<div class="article-detail-layout">
-    <!-- Left Section: Article Content -->
-    <div class="article-content-section">
-        @include('partials.nav')
-        <h1 class="article-detail-title">{{ $article->title }}</h1>
-        <div class="article-detail-content">
-            {!! $article->content !!}
-        </div>
-        
-        
-    </div>
-
-    <!-- Right Section: Article Images -->
-    <div class="article-images-section">
-        @if($article->images && $article->images->count() > 0)
-            <div class="article-images-list">
-                @foreach($article->images as $image)
-                    <div class="article-image-item">
-                        <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $article->title }} - Görsel {{ $loop->iteration }}">
-                    </div>
-                @endforeach
+<div class="article-page">
+    @include('partials.nav')
+    
+    <div class="article-detail-layout">
+        <!-- Left Section: Article Content -->
+        <div class="article-content-section">
+            <h1 class="article-detail-title">{{ $article->title }}</h1>
+            <div class="article-detail-content">
+                {!! $article->content !!}
             </div>
-        @else
-            <p class="no-images">Bu makale için görsel bulunmamaktadır.</p>
-        @endif
+        </div>
+
+        <!-- Right Section: Article Images -->
+        <div class="article-images-section ">
+            @if($article->images && $article->images->count() > 0)
+                <div class="article-images-list">
+                    @foreach($article->images as $image)
+                        <div class="article-image-item">
+                            <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $article->title }} - Görsel {{ $loop->iteration }}">
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p class="no-images">Bu makale için görsel bulunmamaktadır.</p>
+            @endif
+        </div>
     </div>
 </div>
 
 @push('styles')
 <style>
-    .article-detail-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    .article-page {
+        display: flex;
+        flex-direction: column;
         min-height: 100vh;
+    }
+
+    .article-detail-layout {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
         gap: 0;
     }
 
+    .article-content-section,
+    .article-images-section {
+        flex: 0 0 50%;
+        width: 50%;
+    }
+  
     @media (max-width: 768px) {
         .article-detail-layout {
-            grid-template-columns: 1fr;
+            flex-direction: column;
+        }
+        .article-content-section,
+        .article-images-section {
+            flex: 1;
+            width: 100%;
+        }
+        .article-content-section{
+            padding: 10px 10px 0 10px !important;
+            max-height: max-content;
+        }
+        .article-images-section {
+            padding: 0 10px 10px 10px !important;
+        }
+        .article-detail-title {
+            margin-bottom: 12px;
+        }
+        .article-detail-content {
+            margin-bottom: 0;
         }
     }
 
     .article-content-section {
-        padding: 60px 40px;
+        padding: 20px 20px;
         overflow-y: auto;
         height: auto;
         background: #fff;
     }
 
     .article-images-section {
-        padding: 60px 40px;
         overflow-y: auto;
         max-height: 1400px;
         background: #f8f9fa;
@@ -93,7 +123,7 @@
     .article-detail-title {
         font-size: 32px;
         font-weight: 600;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         line-height: 1.3;
     }
 
@@ -101,17 +131,17 @@
         font-size: 16px;
         line-height: 1.8;
         color: #333;
-        margin-bottom: 40px;
+        margin-bottom: 0;
     }
 
     .article-detail-content p {
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
 
     .article-detail-content img {
         max-width: 100%;
         height: auto;
-        margin: 20px 0;
+        margin: 16px 0;
     }
 
     .images-title {
@@ -125,7 +155,7 @@
     .article-images-list {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
     }
 
     .article-image-item {

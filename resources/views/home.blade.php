@@ -11,6 +11,42 @@
 @section('content')
 <div class="home-page">
     @include('partials.nav')
+
+    @if(!empty($heroTextLeft) || !empty($heroTextRight))
+    <section class="home-hero">
+        <div class="home-hero-inner">
+            <div class="home-hero-left">
+                @if(!empty($heroTextLeft))
+                    <div class="home-hero-text">{!! nl2br(e($heroTextLeft)) !!}</div>
+                @endif
+            </div>
+            <div class="home-hero-right">
+                @if(!empty($heroTextRight))
+                    <div class="home-hero-text">{!! nl2br(e($heroTextRight)) !!}</div>
+                @endif
+                @if(!empty($heroLinkUrl))
+                    <a href="{{ $heroLinkUrl }}" class="home-hero-link">{{ 'More →' }}</a>
+                @endif
+            </div>
+        </div>
+    </section>
+    @endif
+
+    @if(!empty($videoEmbedUrl))
+    <section class="home-video">
+        <div class="home-video-inner">
+            <iframe
+                src="{{ $videoEmbedUrl }}"
+                class="home-video-iframe"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                title="Video"
+            ></iframe>
+        </div>
+    </section>
+    @endif
+
     <div id="articles-container" class="articles-grid">
         <!-- Articles will be loaded here -->
         <div class="loading">
@@ -22,7 +58,37 @@
         <div class="loading-spinner"></div>
         <p>Daha fazla yükleniyor...</p>
     </div>
+
+    
 </div>
+
+@push('styles')
+<style>
+    .home-hero { margin-bottom: 40px; }
+    .home-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; max-width: 900px; }
+    .home-hero-text { font-size: 16px; line-height: 1.7; color: #333; }
+    .home-hero-link { display: inline-block; margin-top: 16px; color: #333; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
+    .home-hero-link:hover { opacity: 0.7; }
+    .home-video { margin-top: 40px; height: 100vh; }
+    .home-video-inner { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
+    .home-video-iframe { display: block; width: 100%; height: 100%; border: none; }
+    .home-video-inner::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 160px;
+        height: 56px;
+        background: linear-gradient(135deg, transparent 25%, rgba(0,0,0,0.92) 60%);
+        pointer-events: none;
+    }
+    @media (max-width: 768px) {
+        .home-hero-inner { grid-template-columns: 1fr; gap: 24px; }
+        .home-hero { margin-bottom: 24px; }
+        .home-video { margin-top: 24px; }
+    }
+</style>
+@endpush
 
 @push('scripts')
 <script>
