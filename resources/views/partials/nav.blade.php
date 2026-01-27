@@ -10,7 +10,6 @@
         <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
             <span class="nav-toggle-bar"></span>
             <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
         </button>
         <div class="nav-right">
             <div class="nav-links" id="nav-links">

@@ -184,7 +184,7 @@
         .nav-instagram-arrow { flex-shrink: 0; vertical-align: middle; }
         .logo-text { font-weight: 600; font-size: 18px; }
 
-        .nav-toggle { display: none; background: none; border: none; padding: 8px; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; outline: none; }
+        .nav-toggle { display: none; background: none; border: none; padding: 8px; cursor: pointer; flex-direction: column; justify-content: center; gap: 7px; outline: none; }
         .nav-toggle-bar { display: block; width: 22px; height: 2px; background: #333; transition: transform 0.3s, opacity 0.3s; }
 
         @media (max-width: 768px) {
@@ -281,9 +281,8 @@
             }
             .nav-header.nav-open .site-logo,
             .nav-header.nav-open .logo-text { filter: brightness(0) invert(1); }
-            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
-            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
+            .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { transform: translateY(-4.5px) rotate(-45deg); }
         }
     </style>
     @stack('styles')
