@@ -299,7 +299,7 @@
             align-items: center;
             gap: 24px;
         }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links { display: flex; gap: 60px; align-items: center; }
         .nav-link { color: #333; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
         .nav-link:hover { opacity: 0.7; }
         .nav-link-instagram { display: inline-flex; align-items: center; gap: 6px; }
