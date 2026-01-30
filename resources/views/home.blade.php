@@ -13,19 +13,19 @@
     @include('partials.nav')
 
     @if(!empty($heroTextLeft) || !empty($heroTextRight))
-    <section class="home-hero">
+    <section class="home-hero hero-default">
         <div class="home-hero-inner">
             <div class="home-hero-left">
                 @if(!empty($heroTextLeft))
-                    <div class="home-hero-text">{!! nl2br(e($heroTextLeft)) !!}</div>
+                    <div class="home-hero-title">{!! nl2br(e($heroTextLeft)) !!}</div>
                 @endif
             </div>
             <div class="home-hero-right">
                 @if(!empty($heroTextRight))
-                    <div class="home-hero-text">{!! nl2br(e($heroTextRight)) !!}</div>
+                    <div class="home-hero-description">{!! nl2br(e($heroTextRight)) !!}</div>
                 @endif
                 @if(!empty($heroLinkUrl))
-                    <a href="{{ $heroLinkUrl }}" class="home-hero-link">{{ 'More →' }}</a>
+                    <a href="{{ $heroLinkUrl }}" class="home-hero-link">Detaylı bilgi →</a>
                 @endif
             </div>
         </div>
@@ -49,11 +49,6 @@
 
 @push('styles')
 <style>
-    .home-hero { margin-bottom: 40px; }
-    .home-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; max-width: 900px; }
-    .home-hero-text { font-size: 16px; line-height: 1.7; color: #333; }
-    .home-hero-link { display: inline-block; margin-top: 16px; color: #333; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
-    .home-hero-link:hover { opacity: 0.7; }
     .home-video { margin-top: 40px; height: 100vh; }
     .home-video-inner { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
     .home-video-iframe { display: block; width: 100%; height: 100%; border: none; }

@@ -85,12 +85,17 @@
 
         .articles-grid {
             padding: 3rem var(--spacer) 0;
-            grid-template-columns: repeat(4, 1fr);
             display: grid;
             grid-auto-flow: dense;
             grid-gap: var(--spacer);
-            grid-template-columns: 100%
             margin-top: 10px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1800px) {
+            .articles-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -199,16 +204,101 @@
             height: auto;
             margin: 15px 0;
         }
+        .home-hero.hero-default {
+            padding-top: 155px;
+            margin-bottom: 116px;
+            width: 100%;
+        }
+        .home-hero-inner {
+            width: 100%;
+            max-width: 100%;
+            padding-right: 52px;
+            padding-left: 52px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+            gap: 0 4vw;
+            align-items: start;
+        }
+        .home-hero-title {
+            font-size: 1.4vw;
+            line-height: 1.75vw;
+            color: #333;
+        }
+        .home-hero-description {
+            font-size: 1.4vw;
+            line-height: 1.75vw;
+            color: #333;
+        }
+        .home-hero-description p {
+            margin: 0 0 0.5em;
+        }
+        .home-hero-description p:last-child {
+            margin-bottom: 0;
+        }
+        .home-hero-link {
+            display: inline-block;
+            margin-top: 1.5vw;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.4vw;
+            line-height: 1.75vw;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        .home-hero-link:hover {
+            opacity: 0.7;
+        }
+        @media only screen and (min-width: 992px) {
+            .home-hero.hero-default {
+                padding-top: 9.042vw;
+            }
+        }
+        @media (max-width: 991px) {
+            .home-hero-title,
+            .home-hero-description,
+            .home-hero-link {
+                font-size: 2.5vw;
+                line-height: 1.4;
+            }
+        }
+        @media (max-width: 768px) {
+            .home-hero.hero-default {
+                padding-top: 65px;
+                margin-bottom: 40px;
+            }
+            .home-hero-inner {
+                grid-template-columns: 1fr;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            .home-hero-title,
+            .home-hero-description,
+            .home-hero-link {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+
 
         .nav-header { margin-bottom: 0px; }
         .nav-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+            gap: 0 4vw;
+            align-items: center;
+            padding: 25px 52px;
+        }
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-right {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            padding: 1rem .75rem;
+            gap: 24px;
         }
-        .nav-right { display: flex; gap: 24px; align-items: center; }
         .nav-links { display: flex; gap: 24px; align-items: center; }
         .nav-link { color: #333; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
         .nav-link:hover { opacity: 0.7; }
@@ -220,6 +310,13 @@
         .nav-toggle-bar { display: block; width: 22px; height: 2px; background: #333; transition: transform 0.3s, opacity 0.3s; }
 
         @media (max-width: 768px) {
+            .nav-inner {
+                display: flex;
+                justify-content: space-between;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            .nav-right { justify-content: flex-start; }
             .nav-toggle { display: flex; }
             .nav-header { margin-bottom: 5px; }
             .nav-header.nav-open .nav-toggle-bar { background: #fff; }
@@ -260,7 +357,7 @@
                 grid-template-columns: 1fr auto;
                 width: 100%;
                 height: 100%;
-                padding: 20px 24px 0;
+                padding: 32px 32px 0;
                 align-items: start;
                 gap: 0;
             }
@@ -292,12 +389,14 @@
                 align-items: start;
                 gap: 0;
                 padding: 0;
+                
             }
             .nav-header.nav-open .nav-link {
                 color: #fff;
                 padding: 14px 0;
                 font-size: 30px;
                 width: auto;
+                font-weight: 300;
             }
             .nav-header.nav-open .nav-link:hover { opacity: 0.8; }
             .nav-header.nav-open .nav-instagram {
@@ -319,13 +418,91 @@
             .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
             .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { transform: translateY(-4.5px) rotate(-45deg); }
         }
+
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .preloader--hidden {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+        }
+        .preloader-logo {
+            max-width: 120px;
+            max-height: 60px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .site-footer {
+            background: #000;
+            color: #fff;
+            padding: 2rem 52px;
+        }
+        .site-footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        .site-footer-copyright,
+        .site-footer-address,
+        .site-footer-email,
+        .site-footer-instagram {
+            font-size: 14px;
+        }
+        .site-footer-address {
+            white-space: pre-line;
+        }
+        .site-footer-email,
+        .site-footer-instagram {
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .site-footer-email:hover,
+        .site-footer-instagram:hover {
+            opacity: 0.7;
+        }
+        .site-footer-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .site-footer-icon {
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .site-footer {
+                padding: 1.5rem 25px;
+            }
+            .site-footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
     @stack('styles')
 </head>
 <body>
+    <div id="preloader" class="preloader" aria-hidden="true">
+        @if(!empty($site_logo))
+            <img src="{{ $site_logo }}" alt="" class="preloader-logo">
+        @endif
+    </div>
     <div class="container">
         @yield('content')
     </div>
+    @include('partials.footer')
     @stack('scripts')
     <script>
         (function() {
@@ -342,6 +519,24 @@
                     t.setAttribute('aria-expanded', 'false');
                 });
             });
+        })();
+        (function() {
+            var preloader = document.getElementById('preloader');
+            if (!preloader) return;
+            function hidePreloader() {
+                preloader.classList.add('preloader--hidden');
+                preloader.addEventListener('transitionend', function onEnd() {
+                    preloader.removeEventListener('transitionend', onEnd);
+                    preloader.style.display = 'none';
+                });
+            }
+            if (document.readyState === 'complete') {
+                setTimeout(hidePreloader, 100);
+            } else {
+                window.addEventListener('load', function() {
+                    setTimeout(hidePreloader, 100);
+                });
+            }
         })();
     </script>
 </body>

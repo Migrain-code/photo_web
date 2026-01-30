@@ -1,16 +1,14 @@
 <nav class="nav-header" id="nav-header">
     <div class="nav-inner">
-        @if(!empty($site_logo))
-            <a href="/" class="logo-link">
-                <img src="{{ $site_logo }}" alt="Logo" class="site-logo">
-            </a>
-        @else
-            <a href="/" class="logo-link logo-text">Photo Web</a>
-        @endif
-        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-        </button>
+        <div class="nav-left">
+            @if(!empty($site_logo))
+                <a href="/" class="logo-link">
+                    <img src="{{ $site_logo }}" alt="Logo" class="site-logo">
+                </a>
+            @else
+                <a href="/" class="logo-link logo-text">Photo Web</a>
+            @endif
+        </div>
         <div class="nav-right">
             <div class="nav-links" id="nav-links">
                 <a href="/" class="nav-link">Works</a>
@@ -25,5 +23,9 @@
                 </div>
             @endif
         </div>
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+        </button>
     </div>
 </nav>
