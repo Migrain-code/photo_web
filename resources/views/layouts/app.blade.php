@@ -32,7 +32,7 @@
         }
 
         .home-page {
-            padding: 20px;
+            padding: 0px;
             min-height: 100vh;
         }
 
