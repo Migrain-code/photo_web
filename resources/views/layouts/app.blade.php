@@ -85,6 +85,7 @@
 
         .articles-grid {
             padding: 3rem var(--spacer) 0;
+            grid-template-columns: repeat(4, 1fr);
             display: grid;
             grid-auto-flow: dense;
             grid-gap: var(--spacer);
