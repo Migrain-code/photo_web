@@ -201,7 +201,13 @@
         }
 
         .nav-header { margin-bottom: 0px; }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 15px;}
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 1rem .75rem;
+        }
         .nav-right { display: flex; gap: 24px; align-items: center; }
         .nav-links { display: flex; gap: 24px; align-items: center; }
         .nav-link { color: #333; text-decoration: none; font-size: 16px; font-weight: 500; transition: opacity 0.3s; }
