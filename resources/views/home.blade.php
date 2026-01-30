@@ -32,21 +32,6 @@
     </section>
     @endif
 
-    @if(!empty($videoEmbedUrl))
-    <section class="home-video">
-        <div class="home-video-inner">
-            <iframe
-                src="{{ $videoEmbedUrl }}"
-                class="home-video-iframe"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-                title="Video"
-            ></iframe>
-        </div>
-    </section>
-    @endif
-
     <div id="articles-container" class="articles-grid">
         <!-- Articles will be loaded here -->
         <div class="loading">
@@ -123,15 +108,28 @@
                 articleDiv.className = 'article-item';
                 articleDiv.href = `/article/${article.slug || article.id}`;
                 
-                // Sadece görsel göster - önce featured_image, yoksa ilk image
                 let imageUrl = article.featured_image;
                 if (!imageUrl && article.images && article.images.length > 0) {
                     imageUrl = article.images[0].image_path;
                 }
+                const gifUrl = article.article_gif || null;
 
-                articleDiv.innerHTML = `
-                    ${imageUrl ? `<img src="${imageUrl}" alt="${article.title}" class="article-featured-image">` : ''}
-                `;
+                let mediaHtml = '';
+                if (imageUrl || gifUrl) {
+                    mediaHtml = '<div class="article-item-media">';
+                    if (imageUrl) {
+                        mediaHtml += `<img src="${imageUrl}" alt="${article.title.replace(/"/g, '&quot;')}" class="article-featured-image">`;
+                    }
+                    if (gifUrl) {
+                        if (imageUrl) {
+                            mediaHtml += `<img src="${gifUrl}" alt="${article.title.replace(/"/g, '&quot;')}" class="article-gif">`;
+                        } else {
+                            mediaHtml += `<img src="${gifUrl}" alt="${article.title.replace(/"/g, '&quot;')}" class="article-featured-image">`;
+                        }
+                    }
+                    mediaHtml += '</div>';
+                }
+                articleDiv.innerHTML = mediaHtml;
 
                 container.appendChild(articleDiv);
             });

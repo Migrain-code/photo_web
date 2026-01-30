@@ -25,6 +25,7 @@ class ArticleController extends Controller
                 'seo_description' => $article->seo_description,
                 'content' => $article->content,
                 'featured_image' => $article->featured_image ? asset('storage/' . $article->featured_image) : null,
+                'article_gif' => $article->article_gif ? asset('storage/' . $article->article_gif) : null,
                 'images' => $article->images->map(function ($image) {
                     return [
                         'id' => $image->id,
@@ -59,6 +60,7 @@ class ArticleController extends Controller
                 'seo_description' => $article->seo_description,
                 'content' => $article->content,
                 'featured_image' => $article->featured_image ? asset('storage/' . $article->featured_image) : null,
+                'article_gif' => $article->article_gif ? asset('storage/' . $article->article_gif) : null,
                 'images' => $article->images->map(function ($image) {
                     return [
                         'id' => $image->id,

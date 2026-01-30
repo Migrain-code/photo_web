@@ -13,6 +13,8 @@
         </button>
         <div class="nav-right">
             <div class="nav-links" id="nav-links">
+                <a href="{{ route('/') }}" class="nav-link">Works</a>
+                
                 <a href="{{ route('about') }}" class="nav-link">About</a>
                 <a href="{{ route('contact') }}" class="nav-link">Contact</a>
                 <a href="{{ route('start-a-project') }}" class="nav-link">Start a Project</a>

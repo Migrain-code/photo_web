@@ -74,6 +74,13 @@ class ArticleResource extends Resource
                     ->directory('articles/featured')
                     ->visibility('public')
                     ->columnSpanFull(),
+                Forms\Components\FileUpload::make('article_gif')
+                    ->label('Hover GIF')
+                    ->directory('articles/gifs')
+                    ->visibility('public')
+                    ->acceptedFileTypes(['image/gif'])
+                    ->helperText('Madde üzerine gelindiğinde gösterilecek GIF')
+                    ->columnSpanFull(),
                 Forms\Components\Repeater::make('images')
                     ->label('Makale Görselleri')
                     ->relationship('images')
