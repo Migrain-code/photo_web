@@ -15,7 +15,9 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        :root {
+            --spacer: .75rem;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
@@ -82,9 +84,11 @@
         }
 
         .articles-grid {
+            padding: 3rem var(--spacer) 0;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: .75rem;
+            grid-auto-flow: dense;
+            grid-gap: var(--spacer);
+            grid-template-columns: 100%
             margin-top: 10px;
         }
 
