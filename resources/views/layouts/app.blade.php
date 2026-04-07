@@ -23,6 +23,7 @@
             line-height: 1.6;
             color: #333;
             background: #fff;
+            overflow-x: hidden;
         }
 
         .container {
@@ -551,7 +552,7 @@
         .contact-form { display: flex; flex-direction: column; gap: 20px; }
         .form-group { display: flex; flex-direction: column; gap: 6px; }
         .form-group label { font-weight: 500; font-size: 14px; }
-        .form-group input, .form-group textarea, .form-group select { padding: 10px 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; }
+        .form-group input, .form-group textarea, .form-group select { padding: 10px 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; width: 100%; box-sizing: border-box; }
         .form-group .error { color: #dc3545; font-size: 13px; }
         .btn-submit { padding: 12px 24px; font-size: 16px; font-weight: 500; background: #333; color: #fff; border: none; border-radius: 6px; cursor: pointer; align-self: flex-start; }
         .btn-submit:hover { opacity: 0.9; }
@@ -568,8 +569,8 @@
         .phone-inputs select { width: 120px; flex-shrink: 0; }
         .phone-inputs input { flex: 1; }
         .services-checkboxes { display: flex; flex-wrap: wrap; gap: 10px; }
-        .service-option { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid #ccc; border-radius: 8px; cursor: pointer; }
-        .service-option input { margin: 0; }
+        .service-option { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid #ccc; border-radius: 8px; cursor: pointer; width: auto; }
+        .service-option input { margin: 0; width: auto; }
         .service-option:has(input:checked) { background: #e8f5e9; border-color: #4caf50; }
 
         @media (max-width: 768px) {
@@ -578,11 +579,17 @@
             .home-video { margin-top: 24px; }
             .about-grid { grid-template-columns: 1fr; gap: 24px; }
             .about-left { display: none; }
+            .about-right { max-width: 100%; }
             .contact-grid { grid-template-columns: 1fr; gap: 24px; }
             .contact-left { display: none; }
+            .contact-right { max-width: 100%; }
             .project-grid { grid-template-columns: 1fr; gap: 24px; }
             .project-left { display: none; }
+            .project-right { max-width: 100%; }
             .articles-grid { padding: 3rem 0 0; }
+            .phone-inputs { flex-wrap: wrap; }
+            .phone-inputs select { width: 100%; max-width: 120px; }
+            .phone-inputs input { width: 100%; min-width: 0; }
         }
     </style>
     @stack('styles')
