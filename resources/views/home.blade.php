@@ -25,7 +25,7 @@
                     <div class="home-hero-description">{!! nl2br(e($heroTextRight)) !!}</div>
                 @endif
                 @if(!empty($heroLinkUrl))
-                    <a href="{{ $heroLinkUrl }}" class="home-hero-link">Detaylı bilgi →</a>
+                    <a href="{{ $heroLinkUrl }}" class="home-hero-link">Read More →</a>
                 @endif
             </div>
         </div>

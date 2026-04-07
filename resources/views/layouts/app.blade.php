@@ -533,7 +533,10 @@
 
         /* Contact Page Styles */
         .contact-page { min-height: 100vh; background: #fff; }
-        .contact-container { max-width: 800px; margin: 0 auto; }
+        .contact-container { max-width: 1200px; margin: 0 auto; }
+        .contact-grid { display: grid; grid-template-columns: 50% 50%; gap: 40px; }
+        .contact-left { /* Sol sütun boş */ }
+        .contact-right { /* Sağ sütun form */ }
         .contact-info { margin-bottom: 40px; }
         .contact-details p { margin-bottom: 10px; font-size: 16px; }
         .contact-details a { color: #333; }
@@ -568,7 +571,9 @@
             .home-hero { margin-bottom: 24px; }
             .home-video { margin-top: 24px; }
             .about-grid { grid-template-columns: 1fr; gap: 24px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 24px; }
             .project-grid { grid-template-columns: 1fr; gap: 24px; }
+            .articles-grid { padding: 3rem 0 0; }
         }
     </style>
     @stack('styles')
