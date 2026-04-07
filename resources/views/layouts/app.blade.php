@@ -550,7 +550,7 @@
         /* Project Page Styles */
         .project-page { min-height: 100vh; background: #fff; }
         .project-container { max-width: 1200px; margin: 0 auto; }
-        .project-grid { display: grid; grid-template-columns: 50% 50%; gap: 40px; }
+        .project-grid { display: grid; grid-template-columns: 50% 50%; gap: 18px; }
         .project-left { /* Sol sütun boş */ }
         .project-right { /* Sağ sütun form */ }
         .project-form-title { font-size: 24px; font-weight: 600; margin-bottom: 24px; }
