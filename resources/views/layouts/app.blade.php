@@ -577,8 +577,11 @@
             .home-hero { margin-bottom: 24px; }
             .home-video { margin-top: 24px; }
             .about-grid { grid-template-columns: 1fr; gap: 24px; }
+            .about-left { display: none; }
             .contact-grid { grid-template-columns: 1fr; gap: 24px; }
+            .contact-left { display: none; }
             .project-grid { grid-template-columns: 1fr; gap: 24px; }
+            .project-left { display: none; }
             .articles-grid { padding: 3rem 0 0; }
         }
     </style>
