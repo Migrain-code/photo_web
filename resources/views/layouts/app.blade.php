@@ -486,7 +486,9 @@
                 padding: 1.5rem 25px;
             }
             .site-footer-inner {
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
                 align-items: flex-start;
             }
         }

@@ -10,8 +10,8 @@
 
 @section('content')
 <div class="contact-page">
+    @include('partials.nav')
     <div class="contact-container">
-        @include('partials.nav')
 
         <div class="contact-info">
             @if($contactEmail || $contactPhone || $contactAddress)
@@ -66,8 +66,8 @@
 
 @push('styles')
 <style>
-    .contact-page { min-height: 100vh; padding: 60px 40px; background: #fff; }
-    .contact-container { max-width: 800px; margin: 0 auto; }
+    .contact-page { min-height: 100vh; background: #fff; }
+    .contact-container { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
     .contact-info { margin-bottom: 40px; }
     .contact-details p { margin-bottom: 10px; font-size: 16px; }
     .contact-details a { color: #333; }

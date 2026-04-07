@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="project-page">
+    @include('partials.nav')
     <div class="project-container">
-        @include('partials.nav')
 
         <div class="project-form-wrapper">
             <h2 class="project-form-title">Start a Project</h2>
@@ -64,8 +64,8 @@
 
 @push('styles')
 <style>
-    .project-page { min-height: 100vh; padding: 60px 40px; background: #fff; }
-    .project-container { max-width: 800px; margin: 0 auto; }
+    .project-page { min-height: 100vh; background: #fff; }
+    .project-container { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
     .project-form-title { font-size: 24px; font-weight: 600; margin-bottom: 24px; }
     .alert-success { padding: 12px; background: #d4edda; color: #155724; border-radius: 6px; margin-bottom: 20px; }
     .project-form { display: flex; flex-direction: column; gap: 20px; }

@@ -49,6 +49,7 @@
 
 @push('styles')
 <style>
+    .home-hero-inner { display: grid; grid-template-columns: 50% 50%; gap: 24px; }
     .home-video { margin-top: 40px; height: 100vh; }
     .home-video-inner { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
     .home-video-iframe { display: block; width: 100%; height: 100%; border: none; }
