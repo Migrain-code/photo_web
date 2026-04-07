@@ -73,6 +73,12 @@
             .home-page {
                 padding: 10px;
             }
+            .about-page{
+                padding: 10px;
+            }
+            .contact-page{
+                padding: 10px;
+            }
         }
 
         .about-link {
@@ -207,7 +213,7 @@
         }
 
         .settings-content {
-            font-size: 14px;
+            font-size: 18px;
             line-height: 1.8;
         }
 
@@ -567,7 +573,7 @@
         .service-option:has(input:checked) { background: #e8f5e9; border-color: #4caf50; }
 
         @media (max-width: 768px) {
-            .home-hero-inner { grid-template-columns: 1fr; gap: 24px; padding: 0.75rem }
+            .home-hero-inner { grid-template-columns: 1fr; gap: 24px; }
             .home-hero { margin-bottom: 24px; }
             .home-video { margin-top: 24px; }
             .about-grid { grid-template-columns: 1fr; gap: 24px; }
