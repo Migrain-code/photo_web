@@ -98,6 +98,15 @@
         line-height: 1.8;
     }
 
+    .settings-content ul {
+        padding-left: 20px;
+        margin: 20px 0;
+    }
+
+    .settings-content li {
+        margin-bottom: 8px;
+    }
+
     .settings-content img {
         max-width: 100%;
         height: auto;
