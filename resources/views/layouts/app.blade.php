@@ -291,7 +291,7 @@
         .nav-header { margin-bottom: 0px; }
         .nav-inner {
             display: grid;
-            grid-template-columns: 51% 41.67%;
+            grid-template-columns: 51% 48.67%;
             gap: 0;
             align-items: center;
             padding: 25px 52px;
