@@ -14,7 +14,7 @@
 
     @if(!empty($heroTextLeft) || !empty($heroTextRight))
     <section class="home-hero hero-default">
-        <div class="home-hero-inner">
+        <div class="home-hero-inner page-container">
             <div class="home-hero-left">
                 @if(!empty($heroTextLeft))
                     <div class="home-hero-title">{!! nl2br(e($heroTextLeft)) !!}</div>
@@ -46,30 +46,6 @@
 
     
 </div>
-
-@push('styles')
-<style>
-    .home-hero-inner { display: grid; grid-template-columns: 50% 50%; gap: 24px; }
-    .home-video { margin-top: 40px; height: 100vh; }
-    .home-video-inner { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
-    .home-video-iframe { display: block; width: 100%; height: 100%; border: none; }
-    .home-video-inner::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 160px;
-        height: 56px;
-        background: linear-gradient(135deg, transparent 25%, rgba(0,0,0,0.92) 60%);
-        pointer-events: none;
-    }
-    @media (max-width: 768px) {
-        .home-hero-inner { grid-template-columns: 1fr; gap: 24px; }
-        .home-hero { margin-bottom: 24px; }
-        .home-video { margin-top: 24px; }
-    }
-</style>
-@endpush
 
 @push('scripts')
 <script>
