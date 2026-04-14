@@ -15,6 +15,7 @@ class Article extends Model
         'content',
         'featured_image',
         'article_gif',
+        'views_count',
     ];
 
     public function images(): HasMany

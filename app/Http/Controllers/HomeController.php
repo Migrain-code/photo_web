@@ -80,6 +80,9 @@ class HomeController extends Controller
     {
         $article = Article::with('images')->where('slug', $slug)->firstOrFail();
         
+        // Dispatch job to increment view count
+        \App\Jobs\IncrementArticleView::dispatch($article->id);
+        
         return view('article', [
             'article' => $article,
         ]);

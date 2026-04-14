@@ -73,13 +73,14 @@ class ArticleResource extends Resource
                     ->image()
                     ->directory('articles/featured')
                     ->visibility('public')
+                    ->helperText('Ana sayfada gösterilecek görsel. Önerilen boyut: 1200x800px veya 3:2 oran')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('article_gif')
                     ->label('Hover GIF')
                     ->directory('articles/gifs')
                     ->visibility('public')
                     ->acceptedFileTypes(['image/gif'])
-                    ->helperText('Madde üzerine gelindiğinde gösterilecek GIF')
+                    ->helperText('Ana sayfada makale üzerine gelindiğinde gösterilecek GIF. Önerilen boyut: Öne çıkan görsel ile aynı boyut')
                     ->columnSpanFull(),
                 Forms\Components\Repeater::make('images')
                     ->label('Makale Görselleri')
@@ -99,6 +100,7 @@ class ArticleResource extends Resource
                     ->defaultItems(0)
                     ->addActionLabel('Görsel Ekle')
                     ->reorderableWithButtons()
+                    ->helperText('Makale detay sayfasında gösterilecek ek görseller. İstediğiniz kadar görsel ekleyebilirsiniz.')
                     ->columnSpanFull(),
             ]);
     }
@@ -115,6 +117,11 @@ class ArticleResource extends Resource
                     ->label('Öne Çıkan Görsel')
                     ->disk('public')
                     ->circular(),
+                Tables\Columns\TextColumn::make('views_count')
+                    ->label('Görüntülenme')
+                    ->sortable()
+                    ->badge()
+                    ->color('success'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Oluşturulma Tarihi')
                     ->dateTime('d.m.Y H:i')
