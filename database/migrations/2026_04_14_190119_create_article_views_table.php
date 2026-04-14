@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('article_views', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->date('date');
             $table->unsignedBigInteger('views_count')->default(0);
             $table->timestamps();
             
-            $table->unique('date');
+            $table->unique(['article_id', 'date']);
+            $table->index('date');
         });
     }
 

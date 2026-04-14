@@ -23,14 +23,19 @@ class IncrementArticleView implements ShouldQueue
      */
     public function handle(): void
     {
-        // Increment article views count
-        Article::where('id', $this->articleId)->increment('views_count');
-        
-        // Increment daily views count
         $today = now()->format('Y-m-d');
+        
+        // Günlük makale görüntülenmesini kaydet/güncelle
         ArticleView::updateOrCreate(
-            ['date' => $today],
+            [
+                'article_id' => $this->articleId,
+                'date' => $today
+            ],
             ['views_count' => \DB::raw('views_count + 1')]
         );
+        
+        // Makalenin toplam görüntülenme sayısını güncelle
+        $totalViews = ArticleView::where('article_id', $this->articleId)->sum('views_count');
+        Article::where('id', $this->articleId)->update(['views_count' => $totalViews]);
     }
 }

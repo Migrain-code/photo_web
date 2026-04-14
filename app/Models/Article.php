@@ -22,4 +22,15 @@ class Article extends Model
     {
         return $this->hasMany(ArticleImage::class)->orderBy('order');
     }
+
+    public function views(): HasMany
+    {
+        return $this->hasMany(ArticleView::class);
+    }
+
+    // Toplam görüntülenme sayısını hesapla
+    public function getTotalViewsAttribute(): int
+    {
+        return $this->views()->sum('views_count');
+    }
 }

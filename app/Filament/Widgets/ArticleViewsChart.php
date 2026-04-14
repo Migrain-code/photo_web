@@ -19,9 +19,11 @@ class ArticleViewsChart extends ChartWidget
             $dates->push(now()->subDays($i)->format('Y-m-d'));
         }
 
-        // Veritabanından günlük görüntülenme verilerini al
-        $views = ArticleView::whereIn('date', $dates->toArray())
-            ->pluck('views_count', 'date');
+        // Veritabanından günlük toplam görüntülenme verilerini al
+        $views = ArticleView::selectRaw('date, SUM(views_count) as total')
+            ->whereIn('date', $dates->toArray())
+            ->groupBy('date')
+            ->pluck('total', 'date');
 
         // Her tarih için veri oluştur (yoksa 0)
         $data = $dates->map(function ($date) use ($views) {

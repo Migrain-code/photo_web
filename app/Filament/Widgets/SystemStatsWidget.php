@@ -13,19 +13,22 @@ class SystemStatsWidget extends BaseWidget
 {
     protected function getStats(): array
     {
+        $totalViews = \App\Models\ArticleView::sum('views_count');
+        $mostViewedArticle = Article::orderBy('views_count', 'desc')->first();
+        
         return [
             Stat::make('Toplam Makale', Article::count())
                 ->description('Sistemdeki toplam makale sayısı')
                 ->descriptionIcon('heroicon-m-document-text')
                 ->color('success'),
             
-            Stat::make('Toplam Görüntülenme', Article::sum('views_count'))
+            Stat::make('Toplam Görüntülenme', number_format($totalViews))
                 ->description('Tüm makalelerin toplam görüntülenme sayısı')
                 ->descriptionIcon('heroicon-m-eye')
                 ->color('info'),
             
-            Stat::make('En Çok Görüntülenen', Article::orderBy('views_count', 'desc')->first()?->title ?? 'Henüz yok')
-                ->description(Article::orderBy('views_count', 'desc')->first()?->views_count . ' görüntülenme')
+            Stat::make('En Çok Görüntülenen', $mostViewedArticle?->title ?? 'Henüz yok')
+                ->description(number_format($mostViewedArticle?->views_count ?? 0) . ' görüntülenme')
                 ->descriptionIcon('heroicon-m-star')
                 ->color('warning'),
             
