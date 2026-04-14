@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     public function show()
     {
-        $services = array_keys(ProjectSubmission::serviceOptions());
+        $services = \App\Models\Service::getActiveServices();
 
         $countryCodes = [
             'US +1' => '+1',
@@ -31,7 +31,7 @@ class ProjectController extends Controller
 
     public function submit(Request $request)
     {
-        $services = array_keys(ProjectSubmission::serviceOptions());
+        $services = \App\Models\Service::getActiveServices();
 
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
