@@ -38,7 +38,11 @@ class ContactController extends Controller
             'message' => ['required', 'string'],
         ]);
 
-        ContactSubmission::create($validated);
+        $submission = ContactSubmission::create($validated);
+
+        // Send email notification
+        \Illuminate\Support\Facades\Notification::route('mail', 'grapenstudio@gmail.com')
+            ->notify(new \App\Notifications\ContactSubmissionNotification($submission));
 
         return redirect()->back()->with('success', 'Your message has been sent. Thank you.');
     }

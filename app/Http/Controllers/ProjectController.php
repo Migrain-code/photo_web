@@ -45,13 +45,17 @@ class ProjectController extends Controller
 
         $phone = trim($validated['phone_country'] . ' ' . $validated['phone_number']);
 
-        ProjectSubmission::create([
+        $submission = ProjectSubmission::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'phone' => $phone,
             'message' => $validated['message'],
             'services' => $validated['services'],
         ]);
+
+        // Send email notification
+        \Illuminate\Support\Facades\Notification::route('mail', 'grapenstudio@gmail.com')
+            ->notify(new \App\Notifications\ProjectSubmissionNotification($submission));
 
         return redirect()->back()->with('success', 'Thank you. Your project request has been submitted.');
     }

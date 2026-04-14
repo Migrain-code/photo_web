@@ -3,11 +3,15 @@
 namespace App\Notifications;
 
 use App\Models\ProjectSubmission;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ProjectSubmissionNotification extends Notification
+class ProjectSubmissionNotification extends Notification implements ShouldQueue
 {
+    use Queueable;
+
     public function __construct(
         public ProjectSubmission $submission
     ) {}
@@ -28,15 +32,23 @@ class ProjectSubmissionNotification extends Notification
         ]);
 
         return (new MailMessage)
-            ->subject('Yeni proje talebi: ' . $this->submission->name)
-            ->greeting('Yeni proje talebi alındı')
-            ->line('**Ad:** ' . $this->submission->name)
-            ->line('**E-posta:** ' . $this->submission->email)
-            ->line('**Telefon:** ' . $this->submission->phone)
-            ->line('**Seçilen hizmetler:** ' . $services)
-            ->line('**Mesaj:**')
-            ->line($this->submission->message)
-            ->action('Panelde görüntüle', $url)
-            ->salutation('Bu e-posta otomatik gönderilmiştir.');
+            ->subject('Yeni Proje Başvurusu - ' . $this->submission->name)
+            ->greeting('Yeni Proje Başvurusu!')
+            ->line('Sitenizden yeni bir proje başvurusu geldi.')
+            ->line('')
+            ->line('**Başvuru Sahibi Bilgileri:**')
+            ->line('Ad Soyad: ' . $this->submission->name)
+            ->line('E-posta: ' . $this->submission->email)
+            ->line('Telefon: ' . $this->submission->phone)
+            ->line('')
+            ->line('**Talep Edilen Hizmetler:**')
+            ->line($services)
+            ->line('')
+            ->line('**Proje Detayları:**')
+            ->line($this->submission->message ?: 'Mesaj girilmemiş')
+            ->line('')
+            ->line('Tarih: ' . $this->submission->created_at->format('d.m.Y H:i'))
+            ->action('Admin Panelde Görüntüle', $url)
+            ->salutation('Grapen Studio');
     }
 }
