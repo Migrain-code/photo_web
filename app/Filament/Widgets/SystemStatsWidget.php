@@ -16,6 +16,16 @@ class SystemStatsWidget extends BaseWidget
         $totalViews = \App\Models\ArticleView::sum('views_count');
         $mostViewedArticle = Article::orderBy('views_count', 'desc')->first();
         
+        $mostViewedStat = Stat::make('En Çok Görüntülenen', $mostViewedArticle ? 'Makale #' . $mostViewedArticle->id : 'Henüz yok')
+            ->description(number_format($mostViewedArticle?->views_count ?? 0) . ' görüntülenme')
+            ->descriptionIcon('heroicon-m-star')
+            ->color('warning');
+        
+        // Eğer makale varsa, düzenleme linkini ekle
+        if ($mostViewedArticle) {
+            $mostViewedStat->url(route('filament.admin.resources.articles.edit', ['record' => $mostViewedArticle->id]));
+        }
+        
         return [
             Stat::make('Toplam Makale', Article::count())
                 ->description('Sistemdeki toplam makale sayısı')
@@ -27,10 +37,7 @@ class SystemStatsWidget extends BaseWidget
                 ->descriptionIcon('heroicon-m-eye')
                 ->color('info'),
             
-            Stat::make('En Çok Görüntülenen', $mostViewedArticle?->title ?? 'Henüz yok')
-                ->description(number_format($mostViewedArticle?->views_count ?? 0) . ' görüntülenme')
-                ->descriptionIcon('heroicon-m-star')
-                ->color('warning'),
+            $mostViewedStat,
             
             Stat::make('İletişim Formları', ContactSubmission::count())
                 ->description('Gelen iletişim formu sayısı')
