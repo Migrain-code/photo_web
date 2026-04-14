@@ -541,7 +541,7 @@
         /* Contact Page Styles */
         .contact-page { min-height: 100vh; background: #fff; }
         .contact-container { max-width: 1200px; margin: 0 auto; }
-        .contact-grid { display: grid; grid-template-columns: 50% 50%; gap: 40px; }
+        .contact-grid { display: grid; grid-template-columns: 50% 50%; gap: 18px; }
         .contact-left { /* Sol sütun boş */ }
         .contact-right { /* Sağ sütun form */ }
         .contact-info { margin-bottom: 40px; }
