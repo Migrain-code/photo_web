@@ -86,7 +86,9 @@
         .article-images-section {
             padding: 0 10px 10px 10px !important;
         }
-        
+        .article-images-list{
+            padding-right: 0px!important;
+        }
     }
 
 
