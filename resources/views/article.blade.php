@@ -26,14 +26,13 @@
     <div class="article-detail-layout">
         <!-- Left Section: Article Content -->
         <div class="article-content-section">
-            <h1 class="article-detail-title">{{ $article->title }}</h1>
             <div class="article-detail-content">
                 {!! $article->content !!}
             </div>
         </div>
 
         <!-- Right Section: Article Images -->
-        <div class="article-images-section ">
+        <div class="article-images-section">
             @if($article->images && $article->images->count() > 0)
                 <div class="article-images-list">
                     @foreach($article->images as $image)
@@ -62,6 +61,7 @@
         flex-direction: row;
         flex: 1;
         gap: 0;
+        align-items: flex-start;
     }
 
     .article-content-section,
@@ -86,25 +86,30 @@
         .article-images-section {
             padding: 0 10px 10px 10px !important;
         }
-        .article-detail-title {
-            margin-bottom: 12px;
-        }
         .article-detail-content {
             margin-bottom: 0;
         }
     }
 
     .article-content-section {
-        padding: 20px 20px;
+        padding: 0 40px;
         overflow-y: auto;
         height: auto;
         background: #fff;
+        display: flex;
+        align-items: center;
+    }
+
+    .article-detail-content {
+        width: 100%;
+        padding-right: 20px;
     }
 
     .article-images-section {
         overflow-y: auto;
-        max-height: 1400px;
+        max-height: 100vh;
         background: #f8f9fa;
+        padding: 0 10px;
     }
 
     .back-link {
