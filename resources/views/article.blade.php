@@ -86,14 +86,7 @@
         .article-images-section {
             padding: 0 10px 10px 10px !important;
         }
-        .article-detail-content {
-            margin-bottom: 0;
-            padding: 20px !important;
-        }
-        .article-images-list{
-            padding: 10px !important;
-            gap: 20px !important;
-        }
+        
     }
 
 
