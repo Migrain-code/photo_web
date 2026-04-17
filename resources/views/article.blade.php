@@ -88,8 +88,13 @@
         }
         .article-detail-content {
             margin-bottom: 0;
+            padding: 20px !important;
+        }
+        .article-images-list{
+            padding: 10px !important;
         }
     }
+
 
     .article-content-section {
         padding: 0 40px;
@@ -103,6 +108,7 @@
     .article-detail-content {
         width: 100%;
         padding-right: 20px;
+        padding-left: 10px;
     }
 
     .article-images-section {
