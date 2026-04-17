@@ -92,7 +92,7 @@
         }
         .article-images-list{
             padding: 10px !important;
-            gap: 20px;
+            gap: 20px !important;
         }
     }
 
