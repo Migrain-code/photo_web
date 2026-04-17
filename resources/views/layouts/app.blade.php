@@ -591,6 +591,7 @@
             .phone-inputs select { width: 100%; max-width: 120px; }
             .phone-inputs input { width: 100%; min-width: 0; }
             .article-page {padding: 10px}
+            .project-page {padding: 10px}
         }
     </style>
     @stack('styles')
