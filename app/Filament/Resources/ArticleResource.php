@@ -67,7 +67,22 @@ class ArticleResource extends Resource
                 Forms\Components\RichEditor::make('content')
                     ->label('İçerik')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->disableToolbarButtons([
+                        'blockquote',
+                    ])
+                    ->toolbarButtons([
+                        'bold',
+                        'italic',
+                        'underline',
+                        'strike',
+                        'link',
+                        'heading',
+                        'bulletList',
+                        'orderedList',
+                        'redo',
+                        'undo',
+                    ]),
                 Forms\Components\FileUpload::make('featured_image')
                     ->label('Öne Çıkan Görsel')
                     ->image()

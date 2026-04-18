@@ -462,6 +462,7 @@
             background: #000;
             color: #fff;
             padding: 2rem 52px;
+            margin-top: 10px;
         }
         .site-footer-inner {
             display: flex;

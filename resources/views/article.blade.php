@@ -108,9 +108,6 @@
     }
 
     .article-images-section {
-        overflow-y: auto;
-        max-height: 100vh;
-        background: #f8f9fa;
         padding: 0 10px;
     }
 
@@ -142,7 +139,8 @@
     }
 
     .article-detail-content p {
-        margin-bottom: 16px;
+        margin-bottom: 0;
+        line-height: 1.6;
     }
 
     .article-detail-content img {
